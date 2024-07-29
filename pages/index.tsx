@@ -65,7 +65,7 @@ export default function Home() {
         name or breed, so I can find a patient more quickly.
       </li>
       <li>As a VET.CT customer, I would like my cases to be paginated so I don't
-        have to scroll through long lists
+        have to scroll through long lists of cases.
       </li>
       <li>As a VET.CT customer and screen reader user, I would like to be able
         to use the application without encountering accessibility issues, so I
