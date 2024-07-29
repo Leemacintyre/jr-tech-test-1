@@ -7,9 +7,30 @@ import { cases } from "@/pages/api/cases/data";
 
 const caseApp = new OpenAPIHono();
 
-caseApp.openapi(getCases, (c) => {
+caseApp.openapi(getCases, async (c) => {
   try {
-    return c.json(cases, 200);
+    const { page = "1", limit = "10" } = c.req.valid('query');
+
+    const pageNumber = parseInt(page, 10);
+    const limitNumber = parseInt(limit, 10);
+
+    const startIndex = (pageNumber - 1) * limitNumber;
+    const endIndex = pageNumber * limitNumber;
+
+    const paginatedCases = cases.slice(startIndex, endIndex);
+
+    const totalCases = cases.length;
+
+    const response = {
+      totalCases,
+      totalPages: Math.ceil(totalCases / limitNumber),
+      currentPage: pageNumber,
+      limit: limitNumber,
+      data: paginatedCases,
+    };
+
+    return c.json(response, 200);
+
   } catch (error) {
     return c.json({
       status: 500,
@@ -34,7 +55,7 @@ caseApp.openapi(getCaseById, async (c) => {
       );
     }
 
-    return c.json(singleCase, 200);
+    return c.json({ data: singleCase }, 200);
 
   } catch (error) {
     return c.json({

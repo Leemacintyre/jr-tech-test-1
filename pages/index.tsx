@@ -2,7 +2,7 @@ export default function Home() {
 
 
   return <div>
-    <h1>VET.CT Junior Software Developer technical test</h1>
+    <h1>VET.CT Software Developer technical test</h1>
     <h2>About VET.CT</h2>
     <ul>
       <li>VET.CT is a B2B organisation. Our customers are vets working in
@@ -23,8 +23,8 @@ export default function Home() {
       </li>
       <li>The role will involve UI/UX work, so we expect the project to look
         nice, function well, and be user friendly. It’s up to you how you
-        display the data and style the app, but you must use the provided
-        endpoint, logo and colours.
+        display the data and style the app, but you must use the provided /cases
+        and /cases/:id endpoint, logo and colours.
       </li>
       <li>There is no time limit for the test. We would like to see the required
         user stories completed but you are also welcome to take the test further
@@ -80,7 +80,7 @@ export default function Home() {
     </ul>
 
     <h3>Logo</h3>
-    <p>logo</p>
+    <p>https://euw2-prod-vetct-public-assets.s3.eu-west-2.amazonaws.com/vetct-logos/VETCT-logo-cropped-burgundy.png</p>
 
     <h3>Branding</h3>
     <ul>

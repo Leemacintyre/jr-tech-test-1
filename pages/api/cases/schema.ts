@@ -13,6 +13,31 @@ export const ParamsSchema = z.object({
     }),
 });
 
+export const PaginationParamsSchema = z.object({
+  page: z
+    .string()
+    .regex(/^\d+$/, 'Offset must be a number')
+    .default('1')
+    .openapi({
+      param: {
+        name: 'page',
+        in: 'query',
+      },
+      example: '1',
+    }),
+  limit: z
+    .string()
+    .regex(/^\d+$/, 'Limit must be a number')
+    .default('10')
+    .openapi({
+      param: {
+        name: 'limit',
+        in: 'query',
+      },
+      example: '10',
+    }),
+});
+
 export const CaseSchema = z
   .object({
     id: z.string().openapi({
@@ -57,8 +82,27 @@ export const CaseSchema = z
   })
   .openapi('Case');
 
-
 export const CasesSchema = z.array(CaseSchema).openapi('Cases');
+
+export const PaginatedResponseSchema = z.object({
+  totalCases: z.number().openapi({
+    example: 100,
+  }),
+  totalPages: z.number().openapi({
+    example: 10,
+  }),
+  currentPage: z.number().openapi({
+    example: 1,
+  }),
+  limit: z.number().openapi({
+    example: 10,
+  }),
+  data: CasesSchema,
+}).openapi('PaginatedCasesResponse');
+
+export const ResponseSchema = z.object({
+  data: CaseSchema
+}).openapi('CaseResponse');
 
 
 export const NotFoundSchema = z.object({

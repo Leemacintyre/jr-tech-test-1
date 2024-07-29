@@ -3,19 +3,23 @@ import {
   InternalServerErrorSchema,
   NotFoundSchema,
   ParamsSchema,
-  CaseSchema,
-  CasesSchema
+  PaginatedResponseSchema,
+  PaginationParamsSchema,
+  ResponseSchema
 } from "@/pages/api/cases/schema";
 
 
 export const getCases = createRoute({
   method: 'get',
   path: '/',
+  request: {
+    query: PaginationParamsSchema
+  },
   responses: {
     200: {
       content: {
         'application/json': {
-          schema: CasesSchema,
+          schema: PaginatedResponseSchema,
         },
       },
       description: 'Retrieve the list of cases',
@@ -42,7 +46,7 @@ export const getCaseById = createRoute({
     200: {
       content: {
         'application/json': {
-          schema: CaseSchema,
+          schema: ResponseSchema,
         },
       },
       description: 'Retrieve the case details',
