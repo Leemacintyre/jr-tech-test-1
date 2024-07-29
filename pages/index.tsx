@@ -75,8 +75,8 @@ export default function Home() {
     <ul>
       <li>GET https://jr-tech-test-1.vercel.app/api/doc</li>
       <li>GET https://jr-tech-test-1.vercel.app/api/ui</li>
-      <li>GET https://jr-tech-test-1.vercel.app/api/patients</li>
-      <li>GET https://jr-tech-test-1.vercel.app/api/patients/:id</li>
+      <li>GET https://jr-tech-test-1.vercel.app/api/cases</li>
+      <li>GET https://jr-tech-test-1.vercel.app/api/cases/:id</li>
     </ul>
 
     <h3>Logo</h3>

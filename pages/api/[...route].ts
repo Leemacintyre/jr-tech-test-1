@@ -14,7 +14,7 @@ export const config: PageConfig = {
 
 const app = new OpenAPIHono().basePath('/api');
 
-app.route("patients", patientApp);
+app.route("cases", patientApp);
 
 // The OpenAPI documentation will be available at /doc
 app.doc('/doc', {
