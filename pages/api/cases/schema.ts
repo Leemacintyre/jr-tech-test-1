@@ -13,7 +13,7 @@ export const ParamsSchema = z.object({
     }),
 });
 
-export const PatientSchema = z
+export const CaseSchema = z
   .object({
     id: z.string().openapi({
       example: '1',
@@ -55,10 +55,10 @@ export const PatientSchema = z
       example: 'https://images.dog.ceo/breeds/dachshund/foxhound-53951_640.jpg',
     }),
   })
-  .openapi('Patient');
+  .openapi('Case');
 
 
-export const PatientsSchema = z.array(PatientSchema).openapi('Patients');
+export const CasesSchema = z.array(CaseSchema).openapi('Cases');
 
 
 export const NotFoundSchema = z.object({

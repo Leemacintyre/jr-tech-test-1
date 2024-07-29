@@ -3,22 +3,22 @@ import {
   InternalServerErrorSchema,
   NotFoundSchema,
   ParamsSchema,
-  PatientSchema,
-  PatientsSchema
-} from "@/pages/api/patients/schema";
+  CaseSchema,
+  CasesSchema
+} from "@/pages/api/cases/schema";
 
 
-export const getPatients = createRoute({
+export const getCases = createRoute({
   method: 'get',
   path: '/',
   responses: {
     200: {
       content: {
         'application/json': {
-          schema: PatientsSchema,
+          schema: CasesSchema,
         },
       },
-      description: 'Retrieve the list of patients',
+      description: 'Retrieve the list of cases',
     },
     500: {
       content: {
@@ -32,7 +32,7 @@ export const getPatients = createRoute({
   },
 });
 
-export const getPatientById = createRoute({
+export const getCaseById = createRoute({
   method: 'get',
   path: '/{id}',
   request: {
@@ -42,10 +42,10 @@ export const getPatientById = createRoute({
     200: {
       content: {
         'application/json': {
-          schema: PatientSchema,
+          schema: CaseSchema,
         },
       },
-      description: 'Retrieve the patient details',
+      description: 'Retrieve the case details',
     },
     404: {
       content: {
@@ -53,7 +53,7 @@ export const getPatientById = createRoute({
           schema: NotFoundSchema,
         },
       },
-      description: 'Patient not found',
+      description: 'Case not found',
     },
     500: {
       content: {

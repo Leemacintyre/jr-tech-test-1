@@ -1,15 +1,15 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import {
-  getPatientById,
-  getPatients
-} from "@/pages/api/patients/routes";
-import { patients } from "@/pages/api/patients/data";
+  getCaseById,
+  getCases
+} from "@/pages/api/cases/routes";
+import { cases } from "@/pages/api/cases/data";
 
-const patientApp = new OpenAPIHono();
+const caseApp = new OpenAPIHono();
 
-patientApp.openapi(getPatients, (c) => {
+caseApp.openapi(getCases, (c) => {
   try {
-    return c.json(patients, 200);
+    return c.json(cases, 200);
   } catch (error) {
     return c.json({
       status: 500,
@@ -18,13 +18,13 @@ patientApp.openapi(getPatients, (c) => {
   }
 });
 
-patientApp.openapi(getPatientById, async (c) => {
+caseApp.openapi(getCaseById, async (c) => {
   try {
     const { id } = c.req.valid('param');
 
-    const patient = patients.find((p) => p.id === id);
+    const singleCase = cases.find((p) => p.id === id);
 
-    if (!patient) {
+    if (!singleCase) {
       return c.json(
         {
           status: 404,
@@ -34,7 +34,7 @@ patientApp.openapi(getPatientById, async (c) => {
       );
     }
 
-    return c.json(patient, 200);
+    return c.json(singleCase, 200);
 
   } catch (error) {
     return c.json({
@@ -45,4 +45,4 @@ patientApp.openapi(getPatientById, async (c) => {
 });
 
 
-export default patientApp;
+export default caseApp;

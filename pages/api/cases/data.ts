@@ -1,4 +1,4 @@
-export const patients = [
+export const cases = [
   {
     id: '1',
     creation_date: '07/03/2022 12:06',

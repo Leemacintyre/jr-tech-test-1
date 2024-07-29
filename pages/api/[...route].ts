@@ -1,10 +1,9 @@
-import { Hono } from 'hono';
 import { handle } from 'hono/vercel';
 import type { PageConfig } from 'next';
 
 import { swaggerUI } from '@hono/swagger-ui';
 import { OpenAPIHono } from '@hono/zod-openapi';
-import patientApp from "@/pages/api/patients/handler";
+import caseApp from "@/pages/api/cases/handler";
 
 
 export const config: PageConfig = {
@@ -14,7 +13,7 @@ export const config: PageConfig = {
 
 const app = new OpenAPIHono().basePath('/api');
 
-app.route("cases", patientApp);
+app.route("cases", caseApp);
 
 // The OpenAPI documentation will be available at /doc
 app.doc('/doc', {
