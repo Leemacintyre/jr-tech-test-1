@@ -14,9 +14,12 @@ export const config: PageConfig = {
 
 const app = new OpenAPIHono().basePath('/api');
 
-app.use('/api/*', cors({
-  origin: '*',
+// Apply CORS to all routes
+app.use('/*', cors({
+  origin: '*',  // Allow all origins
   allowMethods: ['GET', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization'],  // Specify allowed headers
+  exposeHeaders: ['Content-Length'],  // Specify headers that should be exposed to the browser
 }));
 
 
