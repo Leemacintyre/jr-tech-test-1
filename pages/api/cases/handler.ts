@@ -4,15 +4,8 @@ import {
   getCases
 } from "@/pages/api/cases/routes";
 import { cases } from "@/pages/api/cases/data";
-import { cors } from 'hono/cors';
-
 
 const caseApp = new OpenAPIHono();
-
-caseApp.use('/*', cors({
-  origin: '*',
-  allowMethods: ['GET', 'OPTIONS'],
-}));
 
 caseApp.openapi(getCases, async (c) => {
   try {

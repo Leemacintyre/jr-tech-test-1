@@ -4,6 +4,7 @@ import type { PageConfig } from 'next';
 import { swaggerUI } from '@hono/swagger-ui';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import caseApp from "@/pages/api/cases/handler";
+import { cors } from "hono/dist/types/middleware/cors";
 
 
 export const config: PageConfig = {
@@ -12,6 +13,11 @@ export const config: PageConfig = {
 
 
 const app = new OpenAPIHono().basePath('/api');
+caseApp.use('/*', cors({
+  origin: '*',
+  allowMethods: ['GET', 'OPTIONS'],
+}));
+
 
 app.route("cases", caseApp);
 
