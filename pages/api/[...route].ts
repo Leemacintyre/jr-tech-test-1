@@ -13,7 +13,8 @@ export const config: PageConfig = {
 
 
 const app = new OpenAPIHono().basePath('/api');
-caseApp.use('/*', cors({
+
+app.use('/api/*', cors({
   origin: '*',
   allowMethods: ['GET', 'OPTIONS'],
 }));
