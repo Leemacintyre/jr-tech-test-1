@@ -4,7 +4,7 @@ import type { PageConfig } from 'next';
 import { swaggerUI } from '@hono/swagger-ui';
 import { OpenAPIHono } from '@hono/zod-openapi';
 import caseApp from "@/pages/api/cases/handler";
-import { cors } from "hono/dist/types/middleware/cors";
+import { cors } from 'hono/cors';
 
 
 export const config: PageConfig = {
