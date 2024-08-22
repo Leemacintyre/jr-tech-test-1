@@ -22,6 +22,14 @@ app.use('/*', cors({
   exposeHeaders: ['Content-Length'],  // Specify headers that should be exposed to the browser
 }));
 
+// Apply caching to all routes (max-age: 1 day)
+app.use(
+  '/*',
+  (c, next) => {
+    c.header('Cache-Control', 'public, max-age=86400');
+    return next();
+  }
+);
 
 app.route("cases", caseApp);
 
